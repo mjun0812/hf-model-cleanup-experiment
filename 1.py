@@ -33,7 +33,7 @@ def main():
     metrics.append(get_memory_usage("final"))
 
     output = "figs/memory_usage_1.png"
-    plot_memory_usage(metrics, output)
+    plot_memory_usage(metrics, output, keys=["psutil"])
     os.chmod(output, 0o777)
 
     save_csv(metrics, "csv/memory_usage_1.csv")

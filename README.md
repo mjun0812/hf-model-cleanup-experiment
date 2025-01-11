@@ -1,4 +1,4 @@
-# HuggingFace Model Release Memory
+# HuggingFace Model Memory Cleanup Experiment
 
 HuggingFaceのモデルをメモリから解放する方法の調査。
 
@@ -8,16 +8,20 @@ docker build -t memory-profiler .
 
 ## 1. `del model; gc.collect();`で削除
 
-![1](figs/memory_usage_1.png)
+![1](figs/2048m/memory_usage_1.png)
 
 ## 2. モデルのパラメータを手動で削除 + `del model; gc.collect();`
 
-![2](figs/memory_usage_2.png)
+![2](figs/2048m/memory_usage_2.png)
 
 ## 3. `del model; gc.collect();` + `ctypes.CDLL("libc.so.6")`で削除
 
-![3](figs/memory_usage_3.png)
+![3](figs/2048m/memory_usage_3.png)
 
 ## 4. モデルのパラメータを手動で削除 + `del model; gc.collect();` + `ctypes.CDLL("libc.so.6")`で削除
 
-![4](figs/memory_usage_4.png)
+![4](figs/2048m/memory_usage_4.png)
+
+## All
+
+![all](figs/2048m/memory_usage_all.png)

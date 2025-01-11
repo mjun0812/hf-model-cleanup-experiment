@@ -61,9 +61,13 @@ def get_st_models(model_name: str):
     return model
 
 
-def plot_memory_usage(metrics: list[dict[str, float]], output: str):
+def plot_memory_usage(
+    metrics: list[dict[str, float]], output: str, keys: list[str] = None
+):
+    if keys is None:
+        keys = metrics[0].keys()
     plt.figure(figsize=(10, 6))
-    for key in metrics[0].keys():
+    for key in keys:
         plt.plot([metric[key] for metric in metrics], label=key)
     plt.xlabel("Iteration")
     plt.ylabel("Memory Usage (MB)")
