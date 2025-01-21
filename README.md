@@ -23,6 +23,10 @@ docker run -it --rm -v $(pwd):/app memory-profiler python /app/1.py
 
 ![4](figs/2048m/memory_usage_4.png)
 
+## 5. `os.environ["MALLOC_TRIM_THRESHOLD_"] = "-1"` + `del model; gc.collect();`で削除
+
+![5](figs/2048m/memory_usage_5.png)
+
 ## All
 
 ![all](figs/2048m/memory_usage_all.png)

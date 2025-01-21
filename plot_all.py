@@ -23,6 +23,7 @@ def main():
     results_2 = load_csv(base_dir / "memory_usage_2.csv")
     results_3 = load_csv(base_dir / "memory_usage_3.csv")
     results_4 = load_csv(base_dir / "memory_usage_4.csv")
+    results_5 = load_csv(base_dir / "memory_usage_5.csv")
 
     plt.figure(figsize=(10, 6))
     metrics = ["psutil"]
@@ -35,6 +36,10 @@ def main():
         plt.plot(
             [metric[key] for metric in results_4],
             label=f"del params + ctypes.{key}",
+        )
+        plt.plot(
+            [metric[key] for metric in results_5],
+            label=f"del model + setenv.{key}",
         )
 
     plt.xlabel("Iteration")
