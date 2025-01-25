@@ -1,6 +1,6 @@
 #!/bin/bash -xe
 
-docker build -t memory-profiler .
+docker build -t memory-profiler-cpu .
 
 MEMORY_SIZES=(2048m 4096m 8192m 16384m)
 for MEMORY_SIZE in ${MEMORY_SIZES[@]}; do

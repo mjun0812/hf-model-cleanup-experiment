@@ -2,12 +2,12 @@
 
 HuggingFaceのモデルをメモリから解放する方法の調査。
 
-```bash
-docker build -t memory-profiler .
-docker run -it --rm -v $(pwd):/app memory-profiler python /app/1.py
-```
-
 ## CPU
+
+```bash
+cd cpu
+./run.sh
+```
 
 ### 1. `del model; gc.collect();`で削除
 
