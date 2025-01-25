@@ -7,26 +7,32 @@ docker build -t memory-profiler .
 docker run -it --rm -v $(pwd):/app memory-profiler python /app/1.py
 ```
 
-## 1. `del model; gc.collect();`で削除
+## CPU
 
-![1](figs/2048m/memory_usage_1.png)
+### 1. `del model; gc.collect();`で削除
 
-## 2. モデルのパラメータを手動で削除 + `del model; gc.collect();`
+![1](cpu/figs/2048m/memory_usage_1.png)
 
-![2](figs/2048m/memory_usage_2.png)
+#### 2. モデルのパラメータを手動で削除 + `del model; gc.collect();`
 
-## 3. `del model; gc.collect();` + `ctypes.CDLL("libc.so.6")`で削除
+![2](cpu/figs/2048m/memory_usage_2.png)
 
-![3](figs/2048m/memory_usage_3.png)
+#### 3. `del model; gc.collect();` + `ctypes.CDLL("libc.so.6")`で削除
 
-## 4. モデルのパラメータを手動で削除 + `del model; gc.collect();` + `ctypes.CDLL("libc.so.6")`で削除
+![3](cpu/figs/2048m/memory_usage_3.png)
 
-![4](figs/2048m/memory_usage_4.png)
+#### 4. モデルのパラメータを手動で削除 + `del model; gc.collect();` + `ctypes.CDLL("libc.so.6")`で削除
 
-## 5. `os.environ["MALLOC_TRIM_THRESHOLD_"] = "-1"` + `del model; gc.collect();`で削除
+![4](cpu/figs/2048m/memory_usage_4.png)
 
-![5](figs/2048m/memory_usage_5.png)
+#### 5. `os.environ["MALLOC_TRIM_THRESHOLD_"] = "-1"` + `del model; gc.collect();`で削除
 
-## All
+![5](cpu/figs/2048m/memory_usage_5.png)
 
-![all](figs/2048m/memory_usage_all.png)
+#### 6. `export MALLOC_TRIM_THRESHOLD_=-1` + `del model; gc.collect();`で削除
+
+![6](cpu/figs/2048m/memory_usage_6.png)
+
+#### All
+
+![all](cpu/figs/2048m/memory_usage_all.png)
