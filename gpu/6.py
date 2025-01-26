@@ -1,5 +1,8 @@
 import gc
 import os
+from pathlib import Path
+
+import torch
 
 from utils import (
     ITERATIONS,
@@ -29,18 +32,23 @@ def main():
         metrics.append(get_memory_usage(prefix + "after get models"))
 
         for i in range(len(models)):
+            models[0] = models[0].cpu()
             del models[0]
             gc.collect()
+            torch.cuda.ipc_collect()
+            torch.cuda.empty_cache()
+            torch._C._cuda_clearCublasWorkspaces()
+            torch.backends.cuda.cufft_plan_cache.clear()
             metrics.append(get_memory_usage(prefix + f"after del models[{i}]"))
         metrics.append(get_memory_usage(prefix + "after del all models"))
 
     metrics.append(get_memory_usage("final"))
 
-    output = "figs/memory_usage_1.png"
+    output = f"figs/memory_usage_{Path(__file__).stem}.png"
     plot_memory_usage(metrics, output, keys=["vram"])
     os.chmod(output, 0o777)
 
-    save_csv(metrics, "csv/memory_usage_1.csv")
+    save_csv(metrics, f"csv/memory_usage_{Path(__file__).stem}.csv")
 
 
 if __name__ == "__main__":
