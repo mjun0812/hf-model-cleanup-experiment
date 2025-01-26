@@ -1,6 +1,9 @@
 # HuggingFace Model Memory Cleanup Experiment
 
-HuggingFaceのモデルをメモリから解放する方法の調査。
+HuggingFaceのモデルをメモリから解放する方法の調査。  
+このリポジトリはHuggingFaceモデルを対象としていますが、PyTorchモデルでも同じ方法が使えます。
+
+This repository is for HuggingFace models, but you can also use PyTorch models.
 
 ## CPU
 
