@@ -78,7 +78,7 @@ nvcc main.cu
 
 ### 7. `model.to("cpu")` + `del model; gc.collect();` + `torch.cuda.empty_cache()` + `torch.cuda.ipc_collect()` + `torch._C._cuda_clearCublasWorkspaces()` + `torch.backends.cuda.cufft_plan_cache.clear()` + `cudaDeviceReset()`
 
-![7-gpu](gpu/figs/memory_usage_7.png)
+Error
 
 ### All
 
