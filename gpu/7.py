@@ -45,11 +45,11 @@ def main():
 
     metrics.append(get_memory_usage("final"))
 
-    output = f"figs/memory_usage_{Path(__file__).name}.png"
+    output = f"figs/memory_usage_{Path(__file__).stem}.png"
     plot_memory_usage(metrics, output, keys=["vram"])
     os.chmod(output, 0o777)
 
-    save_csv(metrics, f"csv/memory_usage_{Path(__file__).name}.csv")
+    save_csv(metrics, f"csv/memory_usage_{Path(__file__).stem}.csv")
 
 
 if __name__ == "__main__":
