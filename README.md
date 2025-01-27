@@ -83,6 +83,10 @@ nvcc main.cu
 
 Error
 
+### 8. `.to("cpu")` + `del model; gc.collect();`
+
+![8-gpu](gpu/figs/memory_usage_8.png)
+
 ### All
 
 ![all-gpu](gpu/figs/memory_usage_all.png)
