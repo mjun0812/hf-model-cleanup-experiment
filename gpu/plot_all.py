@@ -25,6 +25,8 @@ def main():
     results_4 = load_csv(base_dir / "memory_usage_4.csv")
     results_5 = load_csv(base_dir / "memory_usage_5.csv")
     results_6 = load_csv(base_dir / "memory_usage_6.csv")
+    # results_7 = load_csv(base_dir / "memory_usage_7.csv")
+    results_8 = load_csv(base_dir / "memory_usage_6.csv")
 
     plt.figure(figsize=(10, 6))
     metrics = ["vram"]
@@ -37,6 +39,10 @@ def main():
         plt.plot([metric[key] for metric in results_4], label=f"cublas.{key}")
         plt.plot([metric[key] for metric in results_5], label=f"cufft.{key}")
         plt.plot([metric[key] for metric in results_6], label=f"to('cpu').{key}")
+
+        plt.plot(
+            [metric[key] for metric in results_8], label=f"to('cpu')+del model.{key}"
+        )
 
     plt.xlabel("Iteration")
     plt.ylabel("Memory Usage (MB)")
