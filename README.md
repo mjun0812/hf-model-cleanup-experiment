@@ -1,6 +1,9 @@
 # HuggingFace Model Memory Cleanup Experiment
 
-HuggingFaceのモデルをメモリから解放する方法の調査。
+HuggingFaceのモデルをメモリから解放する方法の調査。  
+このリポジトリはHuggingFaceモデルを対象としていますが、PyTorchモデルでも同じ方法が使えます。
+
+This repository is for HuggingFace models, but you can also use PyTorch models.
 
 ## CPU
 
@@ -78,7 +81,7 @@ nvcc main.cu
 
 ### 7. `model.to("cpu")` + `del model; gc.collect();` + `torch.cuda.empty_cache()` + `torch.cuda.ipc_collect()` + `torch._C._cuda_clearCublasWorkspaces()` + `torch.backends.cuda.cufft_plan_cache.clear()` + `cudaDeviceReset()`
 
-![7-gpu](gpu/figs/memory_usage_7.png)
+Error
 
 ### All
 
